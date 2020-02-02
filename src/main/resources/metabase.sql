@@ -37,7 +37,7 @@ GROUP BY progress
 # 按milestone统计bug数量
 SELECT milestone->> '$.title' as '里程碑', count(*) AS `count`
 FROM `issue`
-WHERE (lower(`issue`.`labels`) like '%bug%') and `issue`.`project_name` in('issues', 'da') and milestone->> '$.title' is not null
+WHERE (lower(`issue`.`labels`) like '%bug%') and milestone->> '$.title' is not null
   and milestone->> '$.title' <> 'sword'
 GROUP BY 里程碑;
 
@@ -48,8 +48,7 @@ SELECT  count(*) AS `count`,milestone->> '$.title', date_format(`issue`.`created
             ELSE "新增"
             END as 'plan'
 FROM `issue`
-WHERE `issue`.`project_name` = 'da'
-and milestone->> '$.title'= date_format(now(), '%Y%m')
+WHERE milestone->> '$.title'= date_format(now(), '%Y%m')
   and `issue`.`labels` not like '%bug%'
   and `issue`.`labels` like '%P%'
 GROUP BY plan
