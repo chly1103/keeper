@@ -30,6 +30,10 @@ class GitlabClient {
     @Autowired
     private lateinit var okHttpClient: OkHttpClient
 
+    fun getUser(userId: String): JSONObject {
+        return JSONObject.parseObject(get("$gitlabApi/users/$userId"))
+    }
+
     fun listProjectIssue(projectId: Int, params: String): List<JSONObject> {
         val list: ArrayList<JSONObject> = ArrayList()
         var page = 1
@@ -44,14 +48,6 @@ class GitlabClient {
 
     fun listOpenProjectIssue(projectId: Int): List<JSONObject> {
         return listProjectIssue(projectId, "&state=opened")
-    }
-
-    fun editIssueLabels(projectId: Int, issueIid: Int, labels: String, close: Boolean) {
-        var url = "$gitlabApi/projects/$projectId/issues/$issueIid?labels=$labels"
-        if (close) {
-            url = "$url&state_event=close"
-        }
-        this.put(url, "")
     }
 
     fun listParticipants(projectId: Int, issueIid: Int): List<JSONObject> {
@@ -86,6 +82,18 @@ class GitlabClient {
         } while (item.size == 100)
 
         return list
+    }
+
+    fun editIssueLabels(projectId: Int, issueIid: Int, labels: String, close: Boolean) {
+        var url = "$gitlabApi/projects/$projectId/issues/$issueIid?labels=$labels"
+        if (close) {
+            url = "$url&state_event=close"
+        }
+        this.put(url, "")
+    }
+
+    fun editAssignee(projectId: Int, issueIid: Int, authorId: Int) {
+        this.put("$gitlabApi/projects/$projectId/issues/$issueIid?assignee_ids=$authorId", "")
     }
 
     private fun get(url: String): String {
