@@ -41,6 +41,11 @@ keeper for team running!
 1. 发送的消息过多, 会忽略有意义的信息
 2. 不能 @ 到相关的人, 达不到提醒的作用
 
+### 4. CAS单点登录
+
+![cas diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/wangyuheng/keeper/master/.plantuml/cas.puml)
+
+将Gitlab作为授权服务器，通过代码实现Gitlab Applications交互，并调用API获取用户信息。
 
 ## dependent
 
