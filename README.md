@@ -3,16 +3,9 @@ keeper for team running!
 
 ## feature
 
-### 1. 定时周报发送
+### 1. 成员负载可视化
 
-![weekly diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/wangyuheng/keeper/master/.plantuml/weekly.puml)
-
-1. 督促team成员发送周报，否则会发送remind邮件
-2. 简化编写成本，通过 **issue template** & **markdown** 语法，专注于周报内容本身
-3. 统一管理主题、收件人等信息
-4. 归档管理周报信息，追踪周报中的问题
-
-### 2. 成员负载可视化
+![workload 0](https://raw.githubusercontent.com/wangyuheng/keeper/master/.design/workload_0.png)
 
 ![workload diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/wangyuheng/keeper/master/.plantuml/workload.puml)
 
@@ -25,6 +18,15 @@ keeper for team running!
 2. 当前版本项目issue进度及分布
 3. 成员参与issue数量
 4. bug数量趋势
+
+### 2. 定时周报发送
+
+![weekly diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/wangyuheng/keeper/master/.plantuml/weekly.puml)
+
+1. 督促team成员发送周报，否则会发送remind邮件
+2. 简化编写成本，通过 **issue template** & **markdown** 语法，专注于周报内容本身
+3. 统一管理主题、收件人等信息
+4. 归档管理周报信息，追踪周报中的问题
 
 ### 3. Dingding消息@人
 
