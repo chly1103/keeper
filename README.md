@@ -1,6 +1,16 @@
 # keeper
 keeper for team running!
 
+## 使用说明
+
+
+以`docker-compose`形式启动docker镜像
+
+```hell
+mvn clean package
+docker-compose up
+```
+
 ## feature
 
 ### 1. 成员负载可视化
