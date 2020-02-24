@@ -7,6 +7,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import wang.crick.keeper.client.EmailClient
@@ -21,6 +22,7 @@ const val WEEKLY_LABEL = "周报"
 const val WEEKLY_ARCHIVE_LABEL = "周报归档"
 
 @Component
+@ConditionalOnProperty(value = ["weekly.enable"], havingValue = "true")
 class WeeklyJob {
 
     private val log: Logger = LoggerFactory.getLogger(this.javaClass)
